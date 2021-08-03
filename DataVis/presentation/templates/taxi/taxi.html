@@ -1,0 +1,111 @@
+{% extends "taxi/layout.html" %} {% block DatavisTAXI %}
+<div class="blackBG">
+</div>
+
+<div class="overlay">
+    <p class="header">Welcome To The NYC Taxi Trips Visualisation</p>
+    <p class="vizDesc">We used 2013 New York City taxis data to visualize taxi trips during the month of August</p>
+    <p class="vizDesc">Enjoy obersving the traffic pattern through time</p>
+    <div class="dateDiv">
+        <p>Choose a day :</p>
+        <input type="date" min="2013-08-1" max="2013-08-31" id="#date">
+        <p> (By default it's the whole month of August)</p>
+    </div>
+    <button id="beginButton">Begin</button>
+    <p id="loadingText">Loading data...</p>
+</div>
+
+<div class="settings hiddenOverlay">
+    <h3>Settings</h3>
+
+    <div class="tripsPointsSettings">
+        <h4>Trips Points</h4>
+        <div class="tripsPoints">
+            <div>
+                <input type="checkbox" id="startPointsInput" checked> <span>Start Points</span>
+            </div>
+            <div>
+                <input type="checkbox" id="endPointsInput" checked> <span>End Points</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="tripsPathsSettings">
+        <h4>Trips Paths</h4>
+        <div class="tripsPaths">
+            <div>
+                <input type="radio" name="trips" id="allTripsInput" checked> <span>All Trips (one color)</span>
+            </div>
+            <div>
+                <input type="radio" name="trips" id="dayTripsInput"> <span>Day Trips</span>
+            </div>
+            <div>
+                <input type="radio" name="trips" id="nightTripsInput"> <span>Night Trips</span>
+            </div>
+            <div>
+                <input type="radio" name="trips" id="allTripsNightDayInput"> <span>All Trips (two colors) </span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="legend hiddenOverlay">
+
+    <div class="legendHeader">
+        <i class="fas fa-map-marker-alt"></i>
+        <h2>Legend</h2>
+    </div>
+
+    <div class="startPointLegend">
+        <i class="fas fa-circle"></i>
+        <p>Trip start point</p>
+    </div>
+
+    <div class="endPointLegend">
+        <i class="fas fa-circle"></i>
+        <p>Trip end point</p>
+    </div>
+
+    <div class="tripLegend">
+        <svg id="tripPath">
+            <path d="M5,0 L25,20"> </path>
+        </svg>
+        <p>Trip route</p>
+    </div>
+
+    <div class="tripLegend">
+        <svg id="daytripPath">
+            <path d="M5,0 L25,20"> </path>
+        </svg>
+        <p>Daytime trip route</p>
+    </div>
+
+    <div class="tripLegend">
+        <svg id="nighttripPath">
+            <path d="M5,0 L25,20"> </path>
+        </svg>
+        <p>Nighttime trip route</p>
+    </div>
+
+</div>
+<div id="map"></div>
+
+<div class="flexWrapper hiddenOverlay">
+    <div id="graphWrapper">
+        <h3 id="graph-header">Daily stats</h3>
+        <p class="yAxisHeader">Trips</p>
+        <div class="graph-tip"></div>
+        <svg class="chart"></svg>
+    </div>
+
+    <div class="timeRangeSlider">
+
+        <div id="rangeslide" class="rangeslide"></div>
+
+    </div>
+
+
+</div>
+
+{% endblock DatavisTAXI %}d
